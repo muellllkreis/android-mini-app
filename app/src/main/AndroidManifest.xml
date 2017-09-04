@@ -19,6 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity   android:name=".AddItemActivity"
+                    android:label="Add New Item"
+                    android:parentActivityName=".BucketListActivity" ></activity>
     </application>
 
 </manifest>

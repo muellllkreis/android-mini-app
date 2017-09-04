@@ -1,5 +1,7 @@
 package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 
+import android.app.usage.NetworkStats;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -28,13 +30,13 @@ public class BucketListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         RecyclerView rvItems = (RecyclerView) findViewById(R.id.rvItems);
 
         bucketlist = BucketItem.createBucketList(20);
@@ -63,4 +65,34 @@ public class BucketListActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    public void addItem(View view) {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.editText);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+//    public void addItem(View view) {
+//        startActivityForResult(new Intent(this, AddItemActivity.class), 0);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 0 && resultCode == RESULT_OK) {
+//            BucketItem passedItem = (BucketItem) data.getExtras().get("passed_item");
+//            bucketlist.add(passedItem);
+//            rvItems.getAdapter().notifyDataSetChanged();
+//        }
+//    }
 }
