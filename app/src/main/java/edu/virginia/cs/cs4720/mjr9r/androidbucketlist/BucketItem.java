@@ -4,6 +4,8 @@
  */
 package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
@@ -12,14 +14,29 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Random;
 
-public class BucketItem implements Comparable<BucketItem>{
+public class BucketItem implements Comparable<BucketItem>, Parcelable{
     private String title;
+    private String description;
     private Date duedate;
+    private Double longitude;
+    private Double latitude;
     private boolean finished;
 
     public BucketItem(String title, Date duedate) {
         this.title = title;
+        this.description = "";
         this.duedate = duedate;
+        this.longitude = 0.0;
+        this.latitude = 0.0;
+        this.finished = false;
+    }
+
+    public BucketItem(String title, String description, Date duedate, Double longitude, Double latitude) {
+        this.title = title;
+        this.description = description;
+        this.duedate = duedate;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.finished = false;
     }
 
@@ -35,6 +52,21 @@ public class BucketItem implements Comparable<BucketItem>{
         return finished;
     }
 
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -79,5 +111,19 @@ public class BucketItem implements Comparable<BucketItem>{
         else {
             return comparestatus;
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeString(description);
+        dest.writeValue(duedate);
+        dest.writeDouble(longitude);
+        dest.writeDouble(latitude);
     }
 }
