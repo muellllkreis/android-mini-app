@@ -3,6 +3,7 @@ package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.TextView;
 
@@ -41,21 +42,29 @@ public class AddItemActivity extends AppCompatActivity {
                                             Double.parseDouble(this.longitude.getText().toString()),
                                             Double.parseDouble(this.latitude.getText().toString()));
     }
+
     @Override
-    public void finish() {
-        Intent returnIntent = new Intent();
-        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-        try {
-            BucketItem newitem = new BucketItem(this.title.getText().toString(),
-                    this.description.getText().toString(),
-                    (Date) formatter.parse(this.duedate.getMonth() + "-" + this.duedate.getDayOfMonth() + "-" + this.duedate.getYear()),
-                    Double.parseDouble(this.longitude.getText().toString()),
-                    Double.parseDouble(this.latitude.getText().toString()));
-                    returnIntent.putExtra("passed_item", newitem);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        setResult(RESULT_OK);
-        super.finish();
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

@@ -72,6 +72,16 @@ public class BucketListActivity extends AppCompatActivity {
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
 //    public void addItem(View view) {
 //        startActivityForResult(new Intent(this, AddItemActivity.class), 0);
 //    }
