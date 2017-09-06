@@ -7,8 +7,3 @@
 /build
 /captures
 .externalNativeBuild
-
-*.iws
-.idea/libraries
-.idea/tasks.xml
-.idea/vcs.xml
