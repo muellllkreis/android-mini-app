@@ -39,6 +39,7 @@
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
         android:onClick="addItem"
+        android:onClick="edit_item"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

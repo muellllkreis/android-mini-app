@@ -22,6 +22,10 @@
         <activity   android:name=".AddItemActivity"
                     android:label="Add New Item"
                     android:parentActivityName=".BucketListActivity" ></activity>
+        <activity
+            android:name=".Edit_Item"
+            android:label="@string/edit"
+            android:windowSoftInputMode="adjustPan" ></activity>
     </application>
 
 </manifest>
