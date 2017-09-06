@@ -1,5 +1,7 @@
 package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 
+import android.app.usage.NetworkStats;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -59,10 +61,39 @@ public class BucketListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void edit_item(View view) {
+    public void addItem(View view) {
+        Intent intent = new Intent(this, AddItemActivity.class);
+        //EditText editText = (EditText) findViewById(R.id.editText);
+        //String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+  
+  public void edit_item(View view) {
         Intent edit = new Intent(this,Edit_Item.class);
         this.startActivity(edit);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+//    public void addItem(View view) {
+//        startActivityForResult(new Intent(this, AddItemActivity.class), 0);
+//    }
+//
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 0 && resultCode == RESULT_OK) {
+//            BucketItem passedItem = (BucketItem) data.getExtras().get("passed_item");
+//            bucketlist.add(passedItem);
+//            rvItems.getAdapter().notifyDataSetChanged();
+//        }
+//    }
 }
