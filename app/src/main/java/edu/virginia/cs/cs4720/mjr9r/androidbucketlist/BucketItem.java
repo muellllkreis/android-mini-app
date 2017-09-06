@@ -1,4 +1,3 @@
-
 /**
  * Created by rieti on 31.08.2017.
  */
@@ -7,6 +6,7 @@ package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +14,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Random;
 
-public class BucketItem implements Comparable<BucketItem>, Parcelable{
+public class BucketItem implements Comparable<BucketItem>, Parcelable {
     private String title;
     private String description;
     private Date duedate;
@@ -88,9 +88,14 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable{
 
         for (int i = 1; i <= numItems; i++) {
             bucketlist.add(new BucketItem("Item " + ++lastBucketItemId, new Date(System.currentTimeMillis() + ((long) rnd.nextInt((2543346) + 1) + 86400)*1000)));
+            Log.i("Building Bucketlist", "BucketItem " + i + " added");
         }
-        Collections.sort(bucketlist);
+        Log.i("Building Bucketlist", "Size: " + bucketlist.size());
         return bucketlist;
+    }
+
+    public static void sortList(ArrayList<BucketItem> bucketlist) {
+        Collections.sort(bucketlist);
     }
 
     //Compares Status finished - not finished and then sorts by duedate
@@ -113,6 +118,16 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable{
         }
     }
 
+    protected BucketItem(Parcel in) {
+        title = in.readString();
+        description = in.readString();
+        long tmpDuedate = in.readLong();
+        duedate = tmpDuedate != -1 ? new Date(tmpDuedate) : null;
+        longitude = in.readByte() == 0x00 ? null : in.readDouble();
+        latitude = in.readByte() == 0x00 ? null : in.readDouble();
+        finished = in.readByte() != 0x00;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -122,8 +137,32 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
         dest.writeString(description);
-        dest.writeValue(duedate);
-        dest.writeDouble(longitude);
-        dest.writeDouble(latitude);
+        dest.writeLong(duedate != null ? duedate.getTime() : -1L);
+        if (longitude == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(longitude);
+        }
+        if (latitude == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeDouble(latitude);
+        }
+        dest.writeByte((byte) (finished ? 0x01 : 0x00));
     }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<BucketItem> CREATOR = new Parcelable.Creator<BucketItem>() {
+        @Override
+        public BucketItem createFromParcel(Parcel in) {
+            return new BucketItem(in);
+        }
+
+        @Override
+        public BucketItem[] newArray(int size) {
+            return new BucketItem[size];
+        }
+    };
 }

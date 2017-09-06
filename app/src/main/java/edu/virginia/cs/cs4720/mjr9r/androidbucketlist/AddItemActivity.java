@@ -3,9 +3,12 @@ package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,15 +35,35 @@ public class AddItemActivity extends AppCompatActivity {
         longitude = (TextView) findViewById(R.id.item_longitude);
         latitude = (TextView) findViewById(R.id.item_latitude);
         duedate = (DatePicker) findViewById(R.id.item_duedate);
+        latitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        longitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
     }
 
-    protected void saveItem() throws Exception {
-        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
-        BucketItem newitem = new BucketItem(this.title.getText().toString(),
-                                            this.description.getText().toString(),
-                                            (Date) formatter.parse(this.duedate.getMonth() + "-" + this.duedate.getDayOfMonth() + "-" + this.duedate.getYear()) ,
-                                            Double.parseDouble(this.longitude.getText().toString()),
-                                            Double.parseDouble(this.latitude.getText().toString()));
+    public void saveNewItem(View view) {
+        Log.i("Date", this.duedate.getDayOfMonth() + "-" + this.duedate.getMonth() + "-" + this.duedate.getYear());
+        if(this.title.getText().equals("")
+            || this.description.getText().equals("")
+            || this.longitude.getText().toString().equals("")
+            || this.latitude.getText().toString().equals("")) {
+            Toast.makeText(this, "Please fill out all the fields", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String title = this.title.getText().toString();
+            String description = this.description.getText().toString();
+            String duedate = this.duedate.getMonth()+1 + "-" + this.duedate.getDayOfMonth() + "-" + this.duedate.getYear();
+            Double longitude = Double.parseDouble(this.longitude.getText().toString());
+            Double latitude = Double.parseDouble(this.latitude.getText().toString());
+
+            Intent i = new Intent(this, BucketListActivity.class);
+            i.putExtra("title", title);
+            i.putExtra("description", description);
+            i.putExtra("duedate", duedate);
+            i.putExtra("longitude", longitude);
+            i.putExtra("latitude", latitude);
+            setResult(AddItemActivity.RESULT_OK, i);
+            finish();
+        }
+        //startActivity(i);
     }
 
     @Override
@@ -66,5 +89,10 @@ public class AddItemActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }
