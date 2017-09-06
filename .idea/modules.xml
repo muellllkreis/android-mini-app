@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/android-bucketlist.iml" filepath="$PROJECT_DIR$/android-bucketlist.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android-mini-app-hoppip.iml" filepath="$PROJECT_DIR$/android-mini-app-hoppip.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

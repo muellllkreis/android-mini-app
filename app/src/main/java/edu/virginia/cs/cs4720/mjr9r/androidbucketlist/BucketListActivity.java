@@ -14,10 +14,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.content.Intent;
 import android.widget.CheckBox;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -34,6 +36,7 @@ public class BucketListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         rvItems = (RecyclerView) findViewById(R.id.rvItems);
         if(savedInstanceState != null) {
             bucketlist = savedInstanceState.getParcelableArrayList("bucketlist");
@@ -42,6 +45,7 @@ public class BucketListActivity extends AppCompatActivity {
             bucketlist = BucketItem.createBucketList(5);
             Log.i("Bucketlist in Activity", "" + bucketlist.size());
         }
+
 
 //        Log.i("Still", "Starting Forloop");
 //        for (int i = 0; i < bucketlist.size(); i++) {
@@ -77,10 +81,6 @@ public class BucketListActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    public void addItem(View view) {
-//        Intent intent = new Intent(this, AddItemActivity.class);
-//        startActivity(intent);
-//    }
 
     public void addItem(View view) {
         startActivityForResult(new Intent(this, AddItemActivity.class), 0);
@@ -115,6 +115,11 @@ public class BucketListActivity extends AppCompatActivity {
             BucketItemAdapter adapter = new BucketItemAdapter(this, bucketlist);
             rvItems.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+    }
+  
+  public void edit_item(View view) {
+        Intent edit = new Intent(this,Edit_Item.class);
+        this.startActivity(edit);
     }
 
     @Override
