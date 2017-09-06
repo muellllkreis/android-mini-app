@@ -21,8 +21,9 @@
         </activity>
         <activity
             android:name=".Edit_Item"
-            android:label="@string/app_name"
-            >
+            android:label="@string/edit"
+            android:windowSoftInputMode="adjustPan"
+        >
 
 
         </activity>
