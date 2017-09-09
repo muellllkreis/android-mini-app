@@ -118,8 +118,7 @@ public class BucketListActivity extends AppCompatActivity {
     }
   
   public void edit_item(View view) {
-        Intent edit = new Intent(this,Edit_Item.class);
-        this.startActivity(edit);
+      startActivityForResult(new Intent(this, Edit_Item.class), 0);
     }
 
     @Override
