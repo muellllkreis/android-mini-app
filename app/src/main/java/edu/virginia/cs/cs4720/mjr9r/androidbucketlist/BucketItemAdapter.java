@@ -75,12 +75,6 @@ public class BucketItemAdapter extends
         final CheckBox checkbox = viewHolder.finishedButton;
         checkbox.setChecked(item.isFinished());
 
-        titletext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
         //Reorganizes list when item is checked
         checkbox.setOnClickListener(new View.OnClickListener() {

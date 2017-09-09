@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.widget.CheckBox;
+import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -109,7 +110,25 @@ public class BucketListActivity extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+        }
+        if(requestCode == 1 && resultCode == AddItemActivity.RESULT_OK) {
+            SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+            Bundle extras = data.getExtras();
+            try {
+                BucketItem newitem = new BucketItem(extras.getString("title"),
+                        extras.getString("description"),
+                        formatter.parse(extras.getString("duedate")),
+                        extras.getDouble("longitude"),
+                        extras.getDouble("latitude"));
+                bucketlist.add(newitem);
+                Log.i("onCreate", "" + bucketlist.size());
+                for (int i = 0; i < bucketlist.size(); i++) {
+                    Log.i("Still Bucketlist Elem", bucketlist.get(i).getTitle());
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
+        }
             Log.i("After Intent", "Continue below if");
             BucketItem.sortList(bucketlist);
             BucketItemAdapter adapter = new BucketItemAdapter(this, bucketlist);
@@ -118,7 +137,8 @@ public class BucketListActivity extends AppCompatActivity {
     }
   
   public void edit_item(View view) {
-      startActivityForResult(new Intent(this, Edit_Item.class), 0);
+      Intent i = new Intent(this, Edit_Item.class);
+      startActivityForResult(i, 1);
     }
 
     @Override

@@ -25,11 +25,11 @@ public class Edit_Item extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__item);
 
-        title = (TextView) findViewById(R.id.editText5);
-        description = (TextView) findViewById(R.id.editText4);
-        longitude = (TextView) findViewById(R.id.editText);
-        latitude = (TextView) findViewById(R.id.editText2);
-        duedate = (DatePicker) findViewById(R.id.datePicker2);
+        title = (TextView) findViewById(R.id.item_title);
+        description = (TextView) findViewById(R.id.item_description);
+        longitude = (TextView) findViewById(R.id.item_longitude);
+        latitude = (TextView) findViewById(R.id.item_latitude);
+        duedate = (DatePicker) findViewById(R.id.item_duedate);
         latitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         longitude.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
     }
