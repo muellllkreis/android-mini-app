@@ -44,6 +44,10 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable {
         return title;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
     public Date getDuedate() {
         return duedate;
     }
@@ -66,6 +70,10 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable {
 
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setTitle(String title) {
