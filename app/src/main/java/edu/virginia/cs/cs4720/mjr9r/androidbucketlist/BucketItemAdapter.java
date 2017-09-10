@@ -1,17 +1,21 @@
 package edu.virginia.cs.cs4720.mjr9r.androidbucketlist;
 
 import android.content.Context;
+import android.content.Intent;
+import android.app.Activity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.FieldPosition;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -30,6 +34,11 @@ public class BucketItemAdapter extends
         public TextView titleTextView;
         public TextView duedateTextView;
         public CheckBox finishedButton;
+
+        @Override
+        public boolean equals(Object obj) {
+            return super.equals(obj);
+        }
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -75,6 +84,30 @@ public class BucketItemAdapter extends
         final CheckBox checkbox = viewHolder.finishedButton;
         checkbox.setChecked(item.isFinished());
 
+
+        titletext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getContext(), Edit_Item.class);
+                String title = item.getTitle();
+                //String duedate = item.getDuedate().getMonth()+1 + "-" + item.getDuedate().getDay() + "-" + item.getDuedate().getYear();
+                Double latitude = item.getLatitude();
+                Double longitude = item.getLongitude();
+                String description = item.getDescription();
+
+                SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
+                String duedate = formatter.format(item.getDuedate());
+
+                i.putExtra("title", title);
+                i.putExtra("duedate", duedate);
+                i.putExtra("description", description);
+                i.putExtra("longitude", longitude);
+                i.putExtra("latitude", latitude);
+                i.putExtra("id", mBucketlist.indexOf(item));
+                ((Activity) mContext).startActivityForResult(i,1);
+
+            }
+        });
 
         //Reorganizes list when item is checked
         checkbox.setOnClickListener(new View.OnClickListener() {

@@ -111,7 +111,7 @@ public class BucketListActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
         }
-        if(requestCode == 1 && resultCode == AddItemActivity.RESULT_OK) {
+        if(requestCode == 1 && resultCode == Edit_Item.RESULT_OK) {
             SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
             Bundle extras = data.getExtras();
             try {
@@ -120,7 +120,10 @@ public class BucketListActivity extends AppCompatActivity {
                         formatter.parse(extras.getString("duedate")),
                         extras.getDouble("longitude"),
                         extras.getDouble("latitude"));
+                bucketlist.remove(extras.getInt("id"));
                 bucketlist.add(newitem);
+
+
                 Log.i("onCreate", "" + bucketlist.size());
                 for (int i = 0; i < bucketlist.size(); i++) {
                     Log.i("Still Bucketlist Elem", bucketlist.get(i).getTitle());
@@ -134,11 +137,6 @@ public class BucketListActivity extends AppCompatActivity {
             BucketItemAdapter adapter = new BucketItemAdapter(this, bucketlist);
             rvItems.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-    }
-  
-  public void edit_item(View view) {
-      Intent i = new Intent(this, Edit_Item.class);
-      startActivityForResult(i, 1);
     }
 
     @Override
