@@ -24,10 +24,10 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable {
 
     public BucketItem(String title, Date duedate) {
         this.title = title;
-        this.description = "";
+        this.description = "Your Description For " + title + " Could Go Here!" ;
         this.duedate = duedate;
-        this.longitude = 0.0;
-        this.latitude = 0.0;
+        this.longitude = 1.234;
+        this.latitude = 5.678;
         this.finished = false;
     }
 
@@ -38,6 +38,15 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable {
         this.longitude = longitude;
         this.latitude = latitude;
         this.finished = false;
+    }
+
+    public BucketItem(String title, String description, Date duedate, Double longitude, Double latitude, boolean finished) {
+        this.title = title;
+        this.description = description;
+        this.duedate = duedate;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.finished = finished;
     }
 
     public String getTitle() {
@@ -96,9 +105,7 @@ public class BucketItem implements Comparable<BucketItem>, Parcelable {
 
         for (int i = 1; i <= numItems; i++) {
             bucketlist.add(new BucketItem("Item " + ++lastBucketItemId, new Date(System.currentTimeMillis() + ((long) rnd.nextInt((2543346) + 1) + 86400)*1000)));
-            Log.i("Building Bucketlist", "BucketItem " + i + " added");
         }
-        Log.i("Building Bucketlist", "Size: " + bucketlist.size());
         return bucketlist;
     }
 

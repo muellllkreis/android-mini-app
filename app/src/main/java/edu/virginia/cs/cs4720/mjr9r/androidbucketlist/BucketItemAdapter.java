@@ -104,6 +104,7 @@ public class BucketItemAdapter extends
                 i.putExtra("longitude", longitude);
                 i.putExtra("latitude", latitude);
                 i.putExtra("id", mBucketlist.indexOf(item));
+                i.putExtra("finished", item.isFinished());
                 ((Activity) mContext).startActivityForResult(i,1);
 
             }
@@ -116,7 +117,6 @@ public class BucketItemAdapter extends
                 item.setFinished(!item.isFinished());
                 Collections.sort(mBucketlist);
                 notifyDataSetChanged();
-                Toast.makeText(mContext, "Click " + item.getTitle() + " " + item.isFinished(), Toast.LENGTH_SHORT).show();
             }
         });
 

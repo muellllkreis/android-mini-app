@@ -24,6 +24,7 @@ public class Edit_Item extends AppCompatActivity {
     TextView latitude;
     DatePicker duedate;
     Integer id;
+    boolean finished;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class Edit_Item extends AppCompatActivity {
         Double latitude1 = i.getDoubleExtra("latitude", 0.0);
         String duedate1 = i.getStringExtra("duedate");
         id = i.getIntExtra("id", 0);
+        finished = i.getBooleanExtra("finished", false);
 
         String[] date_array = duedate1.split("-");
 
@@ -85,6 +87,7 @@ public class Edit_Item extends AppCompatActivity {
             i.putExtra("longitude", longitude);
             i.putExtra("latitude", latitude);
             i.putExtra("id", id);
+            i.putExtra("finished", finished);
             setResult(Edit_Item.RESULT_OK, i);
             finish();
         }

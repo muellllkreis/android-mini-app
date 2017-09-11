@@ -114,7 +114,9 @@ public class BucketListActivity extends AppCompatActivity {
                         extras.getString("description"),
                         formatter.parse(extras.getString("duedate")),
                         extras.getDouble("longitude"),
-                        extras.getDouble("latitude"));
+                        extras.getDouble("latitude"),
+                        extras.getBoolean("finished"));
+
                 bucketlist.remove(extras.getInt("id"));
                 bucketlist.add(newitem);
 
