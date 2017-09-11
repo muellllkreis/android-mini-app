@@ -48,11 +48,6 @@ public class BucketListActivity extends AppCompatActivity {
         }
 
 
-//        Log.i("Still", "Starting Forloop");
-//        for (int i = 0; i < bucketlist.size(); i++) {
-//            Log.i("Still Bucketlist Elem", bucketlist.get(i).getTitle());
-//        }
-
         BucketItem.sortList(bucketlist);
         BucketItemAdapter adapter = new BucketItemAdapter(this, bucketlist);
         rvItems.setAdapter(adapter);
@@ -162,10 +157,3 @@ public class BucketListActivity extends AppCompatActivity {
         bucketlist = inState.getParcelableArrayList("bucketlist");
     }
 }
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });

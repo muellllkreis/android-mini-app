@@ -23,11 +23,13 @@
         </activity>
         <activity   android:name=".AddItemActivity"
                     android:label="Add New Item"
-                    android:parentActivityName=".BucketListActivity" ></activity>
+                    android:parentActivityName=".BucketListActivity"
+                    android:windowSoftInputMode="adjustPan"> </activity>
         <activity
             android:name=".Edit_Item"
             android:label="@string/edit"
-            android:windowSoftInputMode="adjustPan" ></activity>
+            android:parentActivityName=".BucketListActivity"
+            android:windowSoftInputMode="adjustPan" > </activity>
     </application>
 
 </manifest>

@@ -29,6 +29,7 @@ public class Edit_Item extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__item);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Intent i = getIntent();
 
