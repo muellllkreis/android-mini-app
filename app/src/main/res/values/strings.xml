@@ -6,6 +6,6 @@
     <string name="description">Description</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
-    <string name="save">Save</string>
-    <string name="action_add">Add new Item</string>
+    <string name="save">Save Item</string>
+    <string name="action_add">Add New Item</string>
 </resources>

@@ -10,99 +10,70 @@
 
     <EditText
         android:id="@+id/item_title"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="547dp"
+        android:layout_height="56dp"
         android:ems="10"
-        android:hint="ToDo Title"
+        android:hint="@string/to_do"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/item_description"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/item_description"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/item_longitude"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_width="544dp"
+        android:layout_height="54dp"
         android:ems="10"
-        android:hint="Longitude"
+        android:hint="@string/longitude"
         android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_latitude"
-        tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/item_duedate"
+        app:layout_constraintTop_toBottomOf="@+id/item_latitude" />
 
     <EditText
         android:id="@+id/item_latitude"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
+        android:layout_width="544dp"
+        android:layout_height="58dp"
         android:ems="10"
-        android:hint="Latitude"
+        android:hint="@string/latitude"
         android:inputType="textPersonName"
-        tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="116dp"
-        tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintHorizontal_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/item_longitude"
+        app:layout_constraintTop_toBottomOf="@+id/item_description" />
 
     <EditText
         android:id="@+id/item_description"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="71dp"
+        android:layout_width="545dp"
+        android:layout_height="53dp"
         android:ems="10"
-        android:hint="ToDo Description"
+        android:hint="@string/description"
         android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/item_latitude"
+        app:layout_constraintTop_toBottomOf="@+id/item_title" />
 
     <DatePicker
         android:id="@+id/item_duedate"
-        android:layout_width="348dp"
-        android:layout_height="0dp"
-        tools:layout_constraintTop_creator="1"
-        android:layout_marginTop="22dp"
-        app:layout_constraintTop_toBottomOf="@+id/item_longitude"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintRight_toRightOf="parent"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/addItemBtn"
+        app:layout_constraintTop_toBottomOf="@+id/item_longitude" />
 
     <Button
         android:id="@+id/addItemBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="49dp"
-        android:layout_marginEnd="84dp"
-        android:text="Save changes"
+        android:text="@string/save"
+        android:onClick="saveNewItem"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/item_duedate"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintRight_creator="1"
-        android:onClick="saveNewItem"/>
+        app:layout_constraintTop_toBottomOf="@+id/item_duedate" />
 
 </android.support.constraint.ConstraintLayout>
